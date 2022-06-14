@@ -38,5 +38,3 @@ if (age_1 < age_2) {
 } else {
 console.log('Technical work')
 };
-
-console.log(`item_6 == ${item_6} item_6_type == ${item_6_type}`);
