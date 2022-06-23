@@ -1,9 +1,8 @@
 const printWord = function(word, q) {
-  word = String(word);
-  word_2 = word;
+  word_2 = String(word);
   for (let i = 1; i <= q; i++) {
-  console.log(word);
-  word += word_2;
+  console.log(word.toString());
+  word += word_2
 }
 }
 
