@@ -1,10 +1,8 @@
 const exp = function(i) {
-  let result = 2 ** i;
-  console.log(result);
+  for (let z = 1; z <= i; z++) {
+    let result = 2 ** z;
+    console.log(result);
+  }
 }
 
-exp(3);
-exp(4);
-exp(5);
-exp(6);
-exp(7);
+exp(10);
