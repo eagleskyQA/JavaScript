@@ -1,4 +1,4 @@
-const enterprises = [
+let enterprises = [
   {
     id: 1,
     name: "Предприятие 1",
@@ -217,9 +217,18 @@ const editEnterprise = (idEnt, newNameEnt) => {
   });
 };
 
+                                  console.log(`----- До редактирования имени -----`)   // Для наглядности в консоли
+
+console.log(enterprises[3]);
+console.log(enterprises[4]);
+
+                                  console.log(`----- После редактирования имени -----`)   // Для наглядности в консоли
+
 editEnterprise(11, 'Предприятие смелых Котиков');
 editEnterprise(12, 'Предприятие бравых Пёселей');
-console.log(enterprises);
+
+console.log(enterprises[3]);
+console.log(enterprises[4]);
 
 separator(6);    // Функция-разделитель заданий
 
@@ -229,17 +238,70 @@ separator(6);    // Функция-разделитель заданий
 // Пример:
 // editDepartment(7, "Новое название отдела")
 
+const editDepartment = (idDep, newNameDep) => {
+  enterprises.forEach(ent => {
+
+    ent.departments.forEach(dept => {
+      if (dept.id === idDep) {
+        dept.name = newNameDep;
+      };
+    });
+  });
+};
+
+                                    console.log(`----- До редактирования имени -----`)      // Для наглядности в консоли
+
+console.log(enterprises[3])
+
+                                    console.log(`----- После редактирования имени -----`)   // Для наглядности в консоли
+
+editDepartment(13, 'Отдел подвоза тортиков')
+editDepartment(14, 'Отдел подвоза чаечка')
+console.log(enterprises[3])
+
+separator(7);    // Функция-разделитель заданий
+
 
 // 7. Написать функцию для удаления предприятия. В качестве аргумента принимает id предприятия.
 
 // Пример:
 // deleteEnterprise(1)
 
+const deleteEnterprise = (idEnt) => {
+  enterprises = enterprises.filter(ent => ent.id !== idEnt);
+    };
+
+deleteEnterprise(1);
+console.log(enterprises);
+
+separator(8);    // Функция-разделитель заданий
+
 
 // 8. Написать функцию для удаления отдела. В качестве аргумента принимает id отдела. Удалить отдел можно только, если в нем нет сотрудников.
 
 // Пример:
 // deleteDepartment(3)
+
+const deleteDepartment = (idDep) => {
+  enterprises.forEach(ent => {
+    let index = ent.departments.findIndex(dep => dep.id === idDep && dep.employees_count === 0);
+    if (index !== -1) {
+      ent.departments.splice(index, 1);
+    };
+  });
+};
+
+console.log(`----- До удаления отдела -----`)
+
+console.log(enterprises[3]);
+
+console.log(`----- После удаления отдела -----`)
+
+deleteDepartment(15)
+console.log(enterprises[3]);
+
+
+separator(9);    // Функция-разделитель заданий
 
 
 // 9. Написать функцию для переноса сотрудников между отделами одного предприятия. В качестве аргумента принимает два значения: id отдела, из которого будут переноситься сотрудники и id отдела, в который будут переноситься сотрудники).
