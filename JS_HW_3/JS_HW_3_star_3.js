@@ -79,7 +79,7 @@ const separator = (taskNumber) => {                                             
 separator(1);    // Функция-разделитель заданий
 
 
-const number_of_employees = (list) => {
+const numberOfEmployees = (list) => {
   list.forEach(el => {
     let count = 0;
 
@@ -103,7 +103,7 @@ const number_of_employees = (list) => {
   });
 };
 
-number_of_employees(enterprises);
+numberOfEmployees(enterprises);
 
 
 separator(2);    // Функция-разделитель заданий
@@ -217,12 +217,12 @@ const editEnterprise = (idEnt, newNameEnt) => {
   });
 };
 
-                                  console.log(`----- До редактирования имени -----`)   // Для наглядности в консоли
+                                  console.log(`----- До редактирования имени -----`);   // Для наглядности в консоли
 
 console.log(enterprises[3]);
 console.log(enterprises[4]);
 
-                                  console.log(`----- После редактирования имени -----`)   // Для наглядности в консоли
+                                  console.log(`----- После редактирования имени -----`);   // Для наглядности в консоли
 
 editEnterprise(11, 'Предприятие смелых Котиков');
 editEnterprise(12, 'Предприятие бравых Пёселей');
@@ -249,15 +249,15 @@ const editDepartment = (idDep, newNameDep) => {
   });
 };
 
-                                    console.log(`----- До редактирования имени -----`)      // Для наглядности в консоли
+                                    console.log(`----- До редактирования имени -----`);      // Для наглядности в консоли
 
-console.log(enterprises[3])
+console.log(enterprises[3]);
 
-                                    console.log(`----- После редактирования имени -----`)   // Для наглядности в консоли
+                                    console.log(`----- После редактирования имени -----`);   // Для наглядности в консоли
 
-editDepartment(13, 'Отдел подвоза тортиков')
-editDepartment(14, 'Отдел подвоза чаечка')
-console.log(enterprises[3])
+editDepartment(13, 'Отдел подвоза тортиков');
+editDepartment(14, 'Отдел подвоза чаечка');
+console.log(enterprises[3]);
 
 separator(7);    // Функция-разделитель заданий
 
@@ -291,13 +291,13 @@ const deleteDepartment = (idDep) => {
   });
 };
 
-console.log(`----- До удаления отдела -----`)
+console.log(`----- До удаления отдела -----`);
 
 console.log(enterprises[3]);
 
-console.log(`----- После удаления отдела -----`)
+console.log(`----- После удаления отдела -----`);
 
-deleteDepartment(15)
+deleteDepartment(15);
 console.log(enterprises[3]);
 
 
@@ -308,3 +308,38 @@ separator(9);    // Функция-разделитель заданий
 
 // Пример:
 // moveEmployees(2, 3)
+
+const moveEmployees = (idStart, idFinish) => {
+
+  let amountMoveEmployees = 0;
+
+  enterprises.forEach(ent => {
+
+    ent.departments.forEach(dep => {
+
+      if (dep.id === idStart) {
+        amountMoveEmployees += dep.employees_count;
+        dep.employees_count -= amountMoveEmployees;
+      };
+    });
+  });
+
+  enterprises.forEach(ent => {
+
+    ent.departments.forEach(dep => {
+
+      if (dep.id === idFinish) {
+        dep.employees_count += amountMoveEmployees;
+      };
+    });
+  });
+};
+
+console.log(`----- До перемещения сотрудников -----`);
+
+console.log(enterprises[0]);
+
+console.log(`----- После перемещения сотрудников -----`);
+
+moveEmployees(7, 6);
+console.log(enterprises[0]);
